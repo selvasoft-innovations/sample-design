@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GP Pharmacy College</title>
+  <!-- Google Font: Montserrat -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://kit.fontawesome.com/bc8b657781.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:ital,wght@0,400;0,700;1,400&family=Ubuntu+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gpRed: "#d32f2f",
+            gpOrange: "#f57c00",
+            lightOrange: "#FEFBE0",
+            'gp-gradient': 'linear-gradient(to right, #d32f2f, #f57c00)'
+          },
+          backgroundImage: {
+            'gp-gradient': 'linear-gradient(to right, #d32f2f, #f57c00)'
+          }, 
+          fontFamily: {
+            montserrat: ['Montserrat', 'sans-serif'],
+            libertinus: ['Libertinus Sans','sans-serif']
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    .marquee {
+      animation: marqueeScroll 15s linear infinite;
+      will-change: transform;
+    }
+
+    @keyframes marqueeScroll {
+      0% {
+        transform: translateX(100vw);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 1s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .animate-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .in-view-left {
+      animation: slideInLeft 0.8s ease-out forwards;
+    }
+
+    .in-view-right {
+      animation: slideInRight 0.8s ease-out forwards;
+    }
+    .in-view-up {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+  </style>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const target = entry.target;
+          if (entry.isIntersecting) {
+            if (target.id === "about-img") {
+              target.classList.add("in-view-left");
+            }
+            if (target.id === "about-text") {
+              target.classList.add("in-view-right");
+            }
+            if (target.id === "course-title") {
+              target.classList.add("in-view-up");
+            }
+            if (target.id === "course-text") {
+              target.classList.add("in-view-left");
+            }
+            if (target.id === "course-images") {
+              target.classList.add("in-view-right");
+            }
+            if (target.id === "highlights-title") {
+              target.classList.add("in-view-up");
+            }
+            if (target.classList.contains("highlight-card")) {
+              target.classList.add("in-view-up");
+            }
+
+          } else {
+            // Remove the animation classes when not in view
+            target.classList.remove("in-view-up", "in-view-left", "in-view-right");
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+    observer.observe(document.getElementById("about-img"));
+    observer.observe(document.getElementById("about-text"));
+    observer.observe(document.getElementById("course-title"));
+    observer.observe(document.getElementById("course-text"));
+    observer.observe(document.getElementById("course-images"));
+    observer.observe(document.getElementById("highlights-title"));
+
+    document.querySelectorAll(".highlight-card").forEach((el) => {
+      observer.observe(el);
+    });
+  });
+  </script>
+</head>
+<body class="font-libertinus">
+
+  <!-- Top Bar -->
+  <div class="bg-gp-gradient font-semibold text-white py-1 overflow-hidden">
+    <div class="marquee flex whitespace-nowrap">
+      <span class="mx-10 inline-block">
+        Counselling Code: 4744 | Approved by AICTE, New Delhi & PCI, New Delhi
+      </span>
+      <span class="mx-10 inline-block">
+        Counselling Code: 4744 | Approved by AICTE, New Delhi & PCI, New Delhi
+      </span>
+      <span class="mx-10 inline-block">
+        Counselling Code: 4744 | Approved by AICTE, New Delhi & PCI, New Delhi
+      </span>
+    </div>
+  </div>
+
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md md:px-20">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center space-x-2">
+        <img src="./GP college/GP-Logo-neww-Photoroom.png" alt="GP Logo" class="h-10 md:h-14 w-auto" />
+        <!-- <span class="font-thin text-gray-700 text-4xl text-center">|</span> -->
+        <span class="font-bold text-lg md:text-xl text-gpRed">GP Pharmacy College</span>
+      </div>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex space-x-6 text-gray-700 font-semibold">
+        <a href="#" class="hover:text-gpRed">Home</a>
+        <a href="#" class="hover:text-gpRed">Courses</a>
+        <a href="#" class="hover:text-gpRed">About Us</a>
+        <a href="#" class="hover:text-gpRed">Contact</a>
+        <a href="#" class="hover:text-gpRed">Gallery</a>
+        <a href="#" class="hover:text-gpRed">News & Events</a>
+      </nav>
+
+      <!-- Mobile Toggle -->
+      <button id="menu-btn" class="md:hidden text-gpRed focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M4 5C3.44772 5 3 5.44772 3 6C3 6.55228 3.44772 7 4 7H20C20.5523 7 21 6.55228 21 6C21 5.44772 20.5523 5 20 5H4ZM7 12C7 11.4477 7.44772 11 8 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H8C7.44772 13 7 12.5523 7 12ZM13 18C13 17.4477 13.4477 17 14 17H20C20.5523 17 21 17.4477 21 18C21 18.5523 20.5523 19 20 19H14C13.4477 19 13 18.5523 13 18Z" fill="#000000"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+      <a href="#" class="block py-2 text-gray-700 hover:text-gpRed">Home</a>
+      <a href="#" class="block py-2 text-gray-700 hover:text-gpRed">Courses</a>
+      <a href="#" class="block py-2 text-gray-700 hover:text-gpRed">About Us</a>
+      <a href="#" class="block py-2 text-gray-700 hover:text-gpRed">Contact</a>
+      <a href="#" class="block py-2 text-gray-700 hover:text-gpRed">Gallery</a>
+      <a href="#" class="block py-2 text-gray-700 hover:text-gpRed">News & Events</a>
+    </div>
+  </header>
+
+  <!-- Hero Slider Section -->
+  <section class="relative group h-[400px] md:h-[600px] overflow-hidden">
+    <!-- Slides Container -->
+    <div class="absolute inset-0 w-full h-full" id="hero-slider">
+      
+      <!-- Slide 1 -->
+      <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image: url('./GP college/G.P-Pharmacy-College-home.jpg');">
+        <div class="bg-black bg-opacity-40 w-full h-full flex items-center justify-start px-4 md:px-16">
+          <div class="text-white max-w-4xl pl-4 md:pl-24 slide-text">
+            <h1 class="fade-in-up text-2xl text-shadow-lg text-shadow-gpRed md:text-5xl font-bold mb-4">GP - Pharmacy College - AICTE & PCI Approved Pharamacy Institute</h1>
+            <p class="text-base md:text-lg mb-6 fade-in-up" style="animation-delay: 0.6s">Offering B.Pharm and D.Pharm course with world-class infrastructure and expert faculty.</p>
+            <a href="#" class="bg-gp-gradient hover:bg-orange-600 text-white py-3 px-6 rounded shadow-md fade-in-up" style="animation-delay: 0.9s">Apply Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('./GP college/G.P.Pharmacy-College26.jpg');">
+        <div class="bg-black bg-opacity-40 w-full h-full flex items-center justify-start px-4 md:px-16">
+          <div class="text-white max-w-4xl pl-4 md:pl-24 slide-text">
+            <h1 class="text-2xl md:text-5xl font-bold mb-4 fade-in-up">State-of-the-Art Labs</h1>
+            <p class="text-base md:text-xl mb-6 fade-in-up" style="animation-delay: 0.6s">Hands-on training with advanced pharmaceutical lab facilities.</p>
+            <a href="#" class="bg-gp-gradient hover:bg-orange-600 text-white py-3 px-6 rounded shadow-md fade-in-up" style="animation-delay: 0.9s">Explore Facilities</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('./GP college/achive.jpg');">
+        <div class="bg-black bg-opacity-40 w-full h-full flex items-center justify-start px-4 md:px-16">
+          <div class="text-white max-w-4xl pl-4 md:pl-24 slide-text">
+            <h1 class="text-2xl md:text-5xl font-bold mb-4 fade-in-up">Experienced Faculty</h1>
+            <p class="text-base md:text-xl mb-6 fade-in-up" style="animation-delay: 0.6s">Learn from top educators with years of academic & industry expertise.</p>
+            <a href="#" class="bg-gp-gradient hover:bg-orange-600 text-white py-3 px-6 rounded shadow-md fade-in-up" style="animation-delay: 0.6s">Meet Our Team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- LEFT ARROW (Desktop only, visible on hover) -->
+  <button id="prev-slide"
+    class="absolute bg-gp-gradient top-1/2 left-4 -translate-y-1/2 opacity-0 group-hover:opacity-100 md:block transition-opacity duration-300 bg-white bg-opacity-30 hover:bg-opacity-60 p-2 rounded-full shadow-md">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="-5.5 0 26 26" fill="#ffffff">
+      <path d="M428.115,1209 L437.371,1200.6 C438.202,1199.77 438.202,1198.43 437.371,1197.6 C436.541,1196.76 435.194,1196.76 434.363,1197.6 L423.596,1207.36 C423.146,1207.81 422.948,1208.41 422.985,1209 C422.948,1209.59 423.146,1210.19 423.596,1210.64 L434.363,1220.4 C435.194,1221.24 436.541,1221.24 437.371,1220.4 C438.202,1219.57 438.202,1218.23 437.371,1217.4 L428.115,1209" transform="translate(-423 -1196)"></path>
+    </svg>
+  </button>
+
+  <!-- RIGHT ARROW (Desktop only, visible on hover) -->
+  <button id="next-slide"
+    class="absolute  bg-gp-gradient top-1/2 right-4 -translate-y-1/2 opacity-0 group-hover:opacity-100 md:block transition-opacity duration-300 bg-white bg-opacity-30 hover:bg-opacity-60 p-2 rounded-full shadow-md rotate-180">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="-5.5 0 26 26" fill="#ffffff">
+      <path d="M428.115,1209 L437.371,1200.6 C438.202,1199.77 438.202,1198.43 437.371,1197.6 C436.541,1196.76 435.194,1196.76 434.363,1197.6 L423.596,1207.36 C423.146,1207.81 422.948,1208.41 422.985,1209 C422.948,1209.59 423.146,1210.19 423.596,1210.64 L434.363,1220.4 C435.194,1221.24 436.541,1221.24 437.371,1220.4 C438.202,1219.57 438.202,1218.23 437.371,1217.4 L428.115,1209" transform="translate(-423 -1196)"></path>
+    </svg>
+  </button>
+    
+  </section>
+
+  <!-- bottom Bar -->
+  <div class="bg-gp-gradient py-3 px-1">
+  </div>
+
+  <!-- About & Courses Section -->
+<!-- About & Courses Section -->
+<section class="bg-white py-12 px-4 md:px-20">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col-reverse md:flex-row gap-8 items-center mb-16">
+
+      <!-- Image -->
+      <div class="w-full md:w-1/2 flex justify-center animate-left" id="about-img">
+        <img src="./GP college/Untitled design (2)-min.png" alt="About GP College" class="w-full max-w-md" />
+      </div>
+
+      <!-- Text -->
+      <div class="w-full md:w-1/2 space-y-4 text-justify animate-right" id="about-text">
+        <h2 class="text-md text-gpRed font-semibold text-center md:text-left"> More About Our College </h2>
+        <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600 uppercase text-center md:text-left">
+          About College
+        </h2>
+        <p class="text-gray-700 text-sm md:text-base leading-relaxed">
+          Er. G. Ponnusamy’s commitment to accessible education extends beyond mere provision; it’s a deeply rooted passion to uplift marginalized communities through knowledge and skill development.
+        </p>
+        <p class="text-gray-700 text-sm md:text-base leading-relaxed">
+          Recognizing the critical need for vocational training, he established the ITI in 1979, laying the foundation for countless individuals to acquire practical skills and secure meaningful employment. This initial step was followed by the establishment of Tirupattur Arts and Science College, GP Polytechnic, and GP College of Education, each strategically designed to cater to diverse educational needs and empower students across various disciplines.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- bottom Bar -->
+  <div class="bg-gp-gradient py-3 px-1">
+  </div>
+  
+  <!-- Courses Offered & Eligibility -->
+  <section class="bg-lightOrange py-12 px-4 md:px-20">
+    <h2 id="course-title" class="text-3xl text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600 uppercase mb-8 opacity-0 translate-y-4 transition-all duration-700">
+        Courses
+    </h2>
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+      <div id="course-text" class="text-justify opacity-0 translate-x-[-30px] transition-all duration-700">
+        <h3 class="text-2xl font-semibold text-gpRed mb-4">Courses Offered</h3>
+        <div class="grid text-gray-700 md:grid-cols-2 gap-8 ">
+            <div class="space-y-4">
+              <div>
+                  <h2 class="font-bold text-xl">D.PHRARMS</h2>
+                  <p>Diploma in Pharamacy - <span class="font-semibold">2 years</span></p>
+              </div>
+              <div>
+                  <h2 class="font-bold text-xl">M.PHRARMS</h2>
+                  <p>Master of Pharamacy - <span class="font-semibold">2 years</span></p>
+                  <ul class="list-disc p-2 pl-4">
+                    <li>Pharmaceutics</li>
+                    <li>Pharmaceutical Analysis</li>
+                    <li>Reglatory Affairs</li>
+                  </ul>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div>
+                  <h2 class="font-bold text-xl">B.PHRARMS</h2>
+                  <p>Bachelor of Pharamacy - <span class="font-semibold">4 years</span></p>
+              </div>
+              <div>
+                  <h2 class="font-bold text-xl">PHRARMS-D</h2>
+                  <p>Doctor of Pharamacy - <span class="font-semibold">6 years</span></p>
+                  <ul class="list-disc p-2 pl-4">
+                    <li>Full scholarship</li>
+                    <li>Opportunities for SC/ST students</li>
+                  </ul>
+              </div>
+            </div>
+        </div>
+        <h4 class="mt-6 text-2xl font-semibold text-gpRed">Eligibility</h4>
+        <p class="text-md text-gray-700 mt-1">
+          <span class="font-semibold"> Passed 10+2 with Science (Physics, Chemistry, Biology/Math)</span>. Minimum marks as prescribed by regulatory authorities.
+        </p>
+      </div>
+
+        <!-- Images -->
+        <div id="course-images" class="grid grid-cols-2 gap-4 opacity-0 translate-x-[30px] transition-all duration-700">
+          <img src="./GP college/lab.jpg" alt="Lab" class="rounded shadow" />
+          <img src="./GP college/libaray.jpg" alt="Classroom" class="rounded shadow" />
+          <img src="./GP college/class.jpg" alt="Library" class="rounded shadow" />
+          <img src="./GP college/computerclass.jpg" alt="Students" class="rounded shadow" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- bottom Bar -->
+  <div class="bg-gp-gradient py-3 px-1">
+  </div>
+
+  <!-- Video Section -->
+  <section class="bg-white py-12 px-4 md:px-20">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="fade-in-up text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600 uppercase mb-8">
+        Campus Tour
+      </h2>
+
+      <div class="relative w-full pb-[56.25%] h-0 fade-in-up" style="animation-delay: 0.3s">
+        <iframe 
+          class="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/oIsIJ6LxVQc?si=8lGOfzer_01F-o9y" 
+          title="YouTube video player" 
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+  <!-- bottom Bar -->
+  <div class="bg-gp-gradient py-3 px-1">
+  </div>
+
+  <!-- Highlights Section -->
+  <section class="bg-lightOrange py-12 px-4 md:px-16 font-montserrat">
+    <div class="max-w-7xl mx-auto">
+      <h2 id="highlights-title" class="text-2xl md:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600 uppercase mb-10 opacity-0 translate-y-4 transition-all duration-700">
+        Highlights of Our College
+      </h2>
+
+      <div id="highlight-items" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 text-center">
+        <!-- Feature Item -->
+        <div class="space-y-4 highlight-card opacity-0 translate-y-6 transition-all duration-700 delay-[100ms]">
+          <img src="./GP college/certificate_3561364.png" alt="Faculty" class="mx-auto h-12">
+          <h3 class="font-bold text-base">Experienced and Skilled Faculty</h3>
+          <p class="text-sm text-gray-700">Our faculty boasts extensive real-world experience and deep subject matter expertise.</p>
+        </div>
+
+        <div class="space-y-4 highlight-card opacity-0 translate-y-6 transition-all duration-700 delay-[200ms]">
+          <img src="./GP college/presentation_3561195.png" alt="Smart Classrooms" class="mx-auto h-12">
+          <h3 class="font-bold text-base">Smart Classrooms</h3>
+          <p class="text-sm text-gray-700">Interactive tech enhances learning. Digital tools drive dynamic, engaging classrooms.</p>
+        </div>
+
+        <div class="space-y-4 highlight-card opacity-0 translate-y-6 transition-all duration-700 delay-[300ms]">
+          <img src="./GP college/communicate_7700401.png" alt="Computer Center" class="mx-auto h-12">
+          <h3 class="font-bold text-base">Well equipped Computer Center</h3>
+          <p class="text-sm text-gray-700">Modern computers, helpful software, and practical, hands-on learning.</p>
+        </div>
+
+        <div class="space-y-4 highlight-card opacity-0 translate-y-6 transition-all duration-700 delay-[400ms]">
+          <img src="./GP college/test-tubes_2804934.png" alt="Modern Laboratories" class="mx-auto h-12">
+          <h3 class="font-bold text-base">Modern laboratories</h3>
+          <p class="text-sm text-gray-700">Hands-on learning with modern equipment. Skills developed in cutting-edge labs.</p>
+        </div>
+
+        <div class="space-y-4 highlight-card opacity-0 translate-y-6 transition-all duration-700 delay-[500ms]">
+          <img src="./GP college/clean-city_8027459.png" alt="Hostel" class="mx-auto h-12">
+          <h3 class="font-bold text-base">Separate Male & Female Hostel</h3>
+          <p class="text-sm text-gray-700">Comfortable, secure hostels ensure student well-being & safety.</p>
+        </div>
+
+        <div class="space-y-4 highlight-card opacity-0 translate-y-6 transition-all duration-700 delay-[600ms]">
+          <img src="./GP college//open-book_3561021.png" alt="Library" class="mx-auto h-12">
+          <h3 class="font-bold text-base">Excellent Library with AC</h3>
+          <p class="text-sm text-gray-700">Air-conditioned library offers a vast collection. Comfortable space for study.</p>
+        </div>
+
+        <div class="space-y-4 highlight-card opacity-0 translate-y-6 transition-all duration-700 delay-[700ms]">
+          <img src="./GP college/school-bus_3561309.png" alt="Transport" class="mx-auto h-12">
+          <h3 class="font-bold text-base">Transportation Facilities</h3>
+          <p class="text-sm text-gray-700">Safe and reliable travel for all students across nearby communities.</p>
+        </div>
+
+        <div class="highlight-card opacity-0 translate-y-6 transition-all duration-700 delay-[800ms]">
+          <img src="./GP college/drinking-water_9047037.png" alt="Drinking Water" class="mx-auto h-12">
+          <h3 class="font-bold text-base">Purified Drinking Water</h3>
+          <p class="text-sm text-gray-700">Safe, purified drinking water readily available for students and staff.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- bottom Bar -->
+  <div class="bg-gp-gradient py-3 px-1">
+  </div>
+  <!-- CTA Section -->
+  <section class="bg-[#fffde9] py-10 px-4 text-center">
+    <h2 class="text-xl md:text-2xl font-bold text-black mb-6">
+      JOIN US, CREATE YOUR FUTURE
+    </h2>
+    <a href="#admission" class="inline-block">
+      <button class="bg-gradient-to-r from-red-500 to-orange-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-2 px-6 rounded shadow-md transition duration-300">
+        JOIN NOW
+      </button>
+    </a>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="bg-gradient-to-r from-orange-600 to-red-500 text-white pt-12 pb-6 px-4 md:px-20">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8 items-start">
+      
+      <!-- Logo and Social Links -->
+      <div class="flex flex-col md:items-start md:items-center">
+        <!-- College Logo -->
+        <img src="./GP college/GP-Logo-neww.png" alt="GP Pharmacy Logo" class="w-24 mb-4">
+
+        <!-- Social Icons -->
+        <div class="flex space-x-4 mt-2">
+          <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" class="text-white hover:text-blue-300 text-xl">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com" target="_blank" aria-label="Instagram" class="text-white hover:text-pink-400 text-xl">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.twitter.com" target="_blank" aria-label="X (Twitter)" class="text-white hover:text-gray-300 text-xl">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+        </div>
+      </div>
+
+
+      <!-- Essential Links -->
+      <div>
+        <h3 class="font-bold text-lg mb-3">ESSENTIAL LINKS</h3>
+        <ul class="space-y-1 text-sm">
+          <li><a href="#" class="hover:underline">Home</a></li>
+          <li><a href="#" class="hover:underline">Course</a></li>
+          <li><a href="#" class="hover:underline">Gallery</a></li>
+          <li><a href="#" class="hover:underline">News & Events</a></li>
+          <li><a href="#" class="hover:underline">Contact us</a></li>
+        </ul>
+      </div>
+
+      <!-- Our Locations -->
+      <div>
+        <h3 class="font-bold text-lg mb-3">OUR LOCATIONS</h3>
+        <p class="text-sm leading-relaxed">
+          Vaniyambadi Main Road,<br />
+          Mandalavadi (Vill & Po),<br />
+          Jolarpet – 635 851,<br />
+          Tirupattur Taluk & District,<br />
+          Tamilnadu, India
+        </p>
+      </div>
+
+      <!-- Quick Contact -->
+      <div>
+        <h3 class="font-bold text-lg mb-3">QUICK CONTACT</h3>
+        <ul class="text-sm space-y-1">
+          <li><a href="tel:+919443437487" class="hover:underline">+91 94434 37487</a></li>
+          <li><a href="tel:+919578627535" class="hover:underline">+91 95786 27535</a></li>
+          <li><a href="tel:+919443229234" class="hover:underline">+91 94432 29234</a></li>
+          <li><a href="tel:+916385759996" class="hover:underline">+91 63857 59996</a></li>
+          <li><a href="tel:+914179299723" class="hover:underline">04179 299723</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="text-center text-sm text-white mt-8 border-t border-white/40 pt-4">
+      <p>Copyright © 2025 <strong>G.P.Pharmacy College</strong> All Rights Reserved.</p>
+      <p class="mt-1">Design by <a href="#" class="underline hover:text-gray-200">Teachziders Innovations</a></p>
+    </div>
+  </footer>
+
+
+  <!-- Mobile Menu Toggle Script -->
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+  <!-- Slider Script -->
+  <script>
+    const slides = document.querySelectorAll('#hero-slider > div');
+    const textBlocks = document.querySelectorAll('.slide-text');
+    let current = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.opacity = i === index ? '1' : '0';
+      });
+
+      // Animate current text block
+      textBlocks.forEach((text, i) => {
+        text.querySelectorAll('*').forEach(el => {
+          el.classList.remove('fade-in-up');
+          void el.offsetWidth; // trigger reflow
+          if (i === index) {
+            el.classList.add('fade-in-up');
+          }
+        });
+      });
+
+      current = index;
+    }
+
+    document.getElementById('next-slide').addEventListener('click', () => {
+      const next = (current + 1) % slides.length;
+      showSlide(next);
+    });
+
+    document.getElementById('prev-slide').addEventListener('click', () => {
+      const prev = (current - 1 + slides.length) % slides.length;
+      showSlide(prev);
+    });
+
+    // Autoplay (optional)
+    setInterval(() => {
+      const next = (current + 1) % slides.length;
+      showSlide(next);
+    }, 6000);
+
+    // Initial show
+    showSlide(current);
+  </script>
+
+</body>
+</html>
